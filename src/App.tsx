@@ -80,8 +80,8 @@ const randomKnownMask = (W: number, H: number, damagePercent: number): Uint8Arra
 const inpaintGaussSeidel = (
   damaged: Tensor,
   known: Uint8Array,
-  lambda: number,
-  beta: number,
+  // lambda: number,
+  // beta: number,
   maxIter: number,
   tol: number
 ): InpaintResult => {
@@ -461,7 +461,7 @@ const App: React.FC = () => {
 
     console.log(`🔄 Iniciando reconstrucción: λ=${lambda}, β=${beta}, maxIter=${maxIter}, tol=${tol}`);
     
-    const result = inpaintGaussSeidel(damagedTensor, knownMask, lambda, beta, maxIter, tol);
+    const result = inpaintGaussSeidel(damagedTensor, knownMask, maxIter, tol);
     
     setReconstructedTensor(result.reconstructed);
     setResiduals(result.residuals);
